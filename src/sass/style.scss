@@ -1,0 +1,308 @@
+@use './mixins.scss';
+
+/* Variables */
+$primary-color: #ffd700; /* اللون الأساسي */
+$text-color: #fff; /* لون النص */
+$bg-color: #000; /* لون الخلفية الافتراضي */
+
+/* Mixins */
+@mixin transition($properties...) {
+  transition: $properties 0.3s ease;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+header{
+    background-image: url(../images/bg.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    .layout{
+        background-color: #00000057;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+
+        .navbar {
+            &-brand {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: $text-color;
+                text-decoration: none;
+            
+                i {
+                    margin-right: 5px;
+                    color: $primary-color;
+                }
+            
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+    
+            &-toggler {
+                box-shadow: none; // الحالة الافتراضية
+            
+                &:focus {
+                    box-shadow: 0px 0px 15px 5px $primary-color;
+                }
+            
+                &:not(:focus) {
+                    box-shadow: none;
+                }
+            }
+    
+            .fa-bars{
+                font-size: 30px;
+                color: white;
+                
+                &:hover{
+                    color: $primary-color;
+                }
+    
+            }
+            &-nav {
+                .nav-link {
+                    color: $text-color;
+                    font-size: 18px;
+                    padding: 10px 18px;
+                    @include transition(color, background);
+                    
+                    &:hover {
+                    color: $primary-color;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    border-radius: 5px;
+                    }
+            
+                    &.active {
+                    color: $primary-color;
+                    }
+    
+                }
+            }
+        }
+
+        .about-us{
+            margin-top: 180px;
+            h1{
+                span{
+                    color: $primary-color;
+                }
+            }
+            p{
+                width: 50%;
+                font-size: 20px;
+                line-height: 35px;
+                color: rgba(255, 255, 255, 0.9);
+            }
+            a{
+                @include mixins.button(#ffffff00, $text-color, $primary-color, $text-color);
+                font-size: 1.1rem; //  
+                font-weight: bold;
+                text-transform: uppercase; 
+
+            }
+        }
+    }
+    
+}
+
+
+.services{
+    padding: 50px 0;
+    background-color: #f8f9fa;
+    .title{
+        margin: 30px;
+        text-align: center;
+    }
+    .card{
+        margin: 10px 0;
+        border: 3px dashed $primary-color;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* طبقة سوداء شفافة */
+            opacity: 0; /* البداية تكون الشفافية صفر */
+            transition: opacity 0.3s ease; /* تأثير الشفافية عند التمرير */
+        }
+        img{
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        &:hover img{
+            transform: scale(1.1) rotate(3deg);
+        }
+        &:hover .image-overlay{
+            opacity: 1;
+        }
+    }
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        color: #333;
+        font-weight: 500;
+        margin-bottom: 15px;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #666;
+    }
+}
+
+
+.our-trip{
+        padding: 50px 0;
+        .title{
+            margin: 30px;
+            text-align: center;
+        }
+        .trip{
+            margin: 30px 0;
+            position: relative;
+            transition: all 0.7s ease;
+            .detalis{
+                position: absolute;
+                top: 0px;
+                right: 20;
+                background-color: rgba($color: #000000, $alpha: 0.6);
+                text-align: center;
+                padding: 5px;
+                transition: all 0.7s ease;
+                border-radius: 20px;
+                color: $primary-color;
+
+                hr{
+                    margin: 0;
+                }
+            }
+
+            &:hover .detalis{
+                transform: rotate(-45deg);
+                top: -50px;
+            }
+            img{
+                border-radius: 20px;
+            }
+            .where-to{
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 30px;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            button{
+                @include mixins.button($primary-color, $text-color, $primary-color, $text-color);
+            }
+
+            &:hover{
+                transform: scale(0.95);
+            }
+        }
+
+}
+
+.contact-us {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+
+    .title {
+        font-size: 2.5rem;
+        color: #333;
+        font-weight: 600;
+    
+        @media (max-width: 767px) {
+            font-size: 2rem;
+        }
+    }
+
+    .contact-info {
+        font-size: 1rem;
+        color: #555;
+
+    
+        strong {
+            color: #333;
+            font-weight: 600;
+        }
+    
+        ul {
+            li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+
+            svg{
+                color: $primary-color;
+            }
+
+            }
+        }
+    }
+
+    .map-container {
+        iframe {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    font-size: 0.9rem;
+
+    a{
+        color: white;
+        transition: 0.3s;
+        transition: all 0.7s ease;
+
+        &:hover svg{
+            color: $primary-color;
+            transform: scale(1.4);
+        }
+    }
+}
+
+
+
+
+@media (max-width: 662px) {
+    header{
+        .layout{
+            .about-us{
+                margin-top: 10px;
+
+                p{
+                    width: 90%;
+                    
+                }
+            }
+        }   
+    } 
+}
+
+
+
+
