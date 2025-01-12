@@ -7,7 +7,7 @@ $bg-color: #000; /* لون الخلفية الافتراضي */
 
 /* Mixins */
 @mixin transition($properties...) {
-  transition: $properties 0.3s ease;
+    transition: $properties 0.3s ease;
 }
 
 *{
@@ -31,6 +31,10 @@ header{
         height: 100%;
 
         .navbar {
+            transition: background-color 0.7s ease; /* تأثير التغيير */
+            &-scrolled {
+                background-color: rgba(0, 0, 0, 0.8); /* لون الخلفية (مظلل قليلاً) */
+            }
             &-brand {
                 font-size: 1.5rem;
                 font-weight: bold;
@@ -73,7 +77,6 @@ header{
                     color: $text-color;
                     font-size: 18px;
                     padding: 10px 18px;
-                    @include transition(color, background);
                     
                     &:hover {
                     color: $primary-color;
@@ -87,6 +90,10 @@ header{
     
                 }
             }
+            .btn-login {
+                @include mixins.button(#ffffff00, $text-color, $primary-color, $text-color);
+            }
+            
         }
 
         .about-us{
@@ -104,7 +111,7 @@ header{
             }
             a{
                 @include mixins.button(#ffffff00, $text-color, $primary-color, $text-color);
-                font-size: 1.1rem; //  
+                font-size: 1.1rem;
                 font-weight: bold;
                 text-transform: uppercase; 
 
@@ -292,7 +299,8 @@ footer {
     header{
         .layout{
             .about-us{
-                margin-top: 10px;
+                position: absolute;
+                bottom: 50px;
 
                 p{
                     width: 90%;

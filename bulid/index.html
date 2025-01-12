@@ -10,12 +10,12 @@
 
         <title>مرحبا بالعالم!</title>
     <script defer src="/js/index.js"></script><link href="/css/style.css" rel="stylesheet"></head>
-    <body>
+    <body data-bs-spy="scroll" data-bs-target="#nav">
         <header>
             <!-- Layout wrapper -->
             <div class="layout">
                 <!-- Navigation bar -->
-                <nav class="navbar navbar-expand-lg p-3">
+                <nav class="navbar navbar-expand-lg p-3 fixed-top" id="nav">
                     <div class="container-fluid">
                         <!-- Logo / Brand -->
                         <a class="navbar-brand" href="#">
@@ -32,7 +32,7 @@
                             <!-- Navigation links -->
                             <ul class="navbar-nav m-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">من نحن</a>
+                                    <a class="nav-link active" aria-current="page" href="#who-are-we">من نحن</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#services">خدماتنا</a>
@@ -44,22 +44,64 @@
                                     <a class="nav-link" href="#contact-us">تواصل معنا</a>
                                 </li>
                             </ul>
+                            <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn-login">Login</button>
                         </div>
                     </div>
                 </nav>
-                <div class="about-us text-center text-white">
+                <div id="who-are-we" class="about-us text-center text-white">
                     <h1 class="p-5">شركة <span class="title">سفرني</span></h1>
                     <p class="m-auto ">الشركة السياحية الأفضل في الوطن العربي، هدفنا مساعدتك وتيسير أمورك، لا تتردد بالتواصل معنا فنحن هنا لنساعدك على إيجاد كل ما تحتاج له. إن كنت تبحث عن سكن أو جولة سياحية لتقضي أفضل الأوقات فقد وجدت طلبك.</p>
-                    <a href="#" class="btn m-5">
+                    <a href="#services" class="btn m-5">
                         معرفة المزيد <i class="fa fa-arrow-left"></i>                   
                     </a>
                 </div>
+
+                <!--login-->
+                <div class="modal fade" id="exampleModal" tabindex="-1" >
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">تسجيل الدخول</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">البريد الإلكتروني</label>
+                                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                        <div class="invalid-feedback">
+                                            يرجى إدخال بريد إلكتروني صالح.
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputPassword" class="form-label">كلمة السر</label>
+                                        <input type="password" class="form-control" id="inputPassword">
+                                        <div class="invalid-feedback">
+                                            يرجى إدخال كلمة سر.
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between pb-3">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                                            <label class="form-check-label" for="rememberMe">تذكرني</label>
+                                        </div>
+                                        <a href="#" class="text-decoration-none">هل نسيت كلمة المرور؟</a>
+                                    </div>
+                                    <div class="modal-footer w-100 justify-content-lg-start">
+                                        <button type="submit" class="btn btn-primary">تسجيل الدخول</button>
+                                        <a href="singup.html" class="btn btn-secondary">إنشاء حساب جديد</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </header>
-        
 
         <main>
-            <section id="services" class="services">
+            <section data-aos="fade-up" id="services" class="services">
                 <div class="container">
                     <h1 class="title "> خدماتنا </h1>
                     <div class="row">
@@ -106,7 +148,7 @@
                     </div>
                 </div>
             </section>
-            <section id="our-trip" class="our-trip">
+            <section data-aos="fade-up" id="our-trip" class="our-trip">
                 <div class="container">
                     <h1 class="title "> رحلاتنا القادمة </h1>
                     <div class="row">
@@ -159,7 +201,7 @@
                     </div>
                 </div>
             </section>
-            <section id="contact-us" class="contact-us">
+            <section data-aos="fade-up" id="contact-us" class="contact-us">
                 <div class="container">
                     <h1 class="title text-center mb-5">تواصل معنا</h1>
                     <div class="row">
