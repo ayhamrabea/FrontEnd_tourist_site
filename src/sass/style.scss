@@ -1,9 +1,7 @@
 @use './mixins.scss';
+@use 'variables' as *;
+@use './singgup.scss';
 
-/* Variables */
-$primary-color: #ffd700; /* اللون الأساسي */
-$text-color: #fff; /* لون النص */
-$bg-color: #000; /* لون الخلفية الافتراضي */
 
 /* Mixins */
 @mixin transition($properties...) {

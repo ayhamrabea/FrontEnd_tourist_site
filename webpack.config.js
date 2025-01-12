@@ -101,16 +101,26 @@ module.exports = {
             template: './src/index.html',   // الملف الذي سوف يعمل عليه
             filename: 'index.html'    // اسم الملف عتدما يكون جاهز
             }),
+
+            new HtmlWebpackPlugin({
+                template: './src/singup.html',   
+                filename: 'singup.html'    
+            }),
+            new HtmlWebpackPlugin({
+                template: './src/login.html',   
+                filename: 'login.html'    
+            }),
+                
             new CleanWebpackPlugin(),  // لأيقاف توليد الملفات
             new MiniCssExtractPlugin({
-                filename: "css/style.css"
+                filename: "css/style.css" // MiniCssExtractPlugin هو أداة قوية لتحسين الأداء في ويبباك عن طريق استخراج ملفات سسس من جافا إلى ملفات مستقلة. هذه الطريقة تساعد في تقليل حجم جافا وتحسين وقت التحميل، وتعزز التخزين المؤقت للمتصفح.
             })
         ],
 
-        performance: {    // لأنشاء مجلد و ملف ال css
-            hints: false,
-            maxEntrypointSize: 512000,
-            maxAssetSize: 512000
+        performance: {    //   هذا مفيد لتحديد حدود الحجم التي يجب أن تلتزم بها ملفات المشروع لتجنب المشاكل المتعلقة بالأداء. ويمكنك ضبط هذه القيم بناءً على متطلباتك.
+            hints: false,   // لأظهار الأخطاء المتعلقة بالحجم
+            maxEntrypointSize: 512000,  // ملفات الأدخال مثل index.js
+            maxAssetSize: 512000   // متعلق بحجم الصور
         }
 
 };

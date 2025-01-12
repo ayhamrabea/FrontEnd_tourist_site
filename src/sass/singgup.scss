@@ -1,0 +1,62 @@
+@use 'variables' as *;
+@use './mixins.scss';
+
+.singup {
+    background-color: rgba(0, 0, 0, 0.5);  // استخدام اللون الشفاف بدلاً من #0000007e
+    padding: 30px;
+    color: white;
+    width: 100%;  // لجعل العنصر يتناسب مع حجم الشاشة
+    max-width: 600px;  // تحديد أقصى عرض للعنصر
+    margin: 150px auto;  // ضبط الهامش بشكل مركزي
+    border: 2px dashed $primary-color;  // تحسين سمك الحدود
+    position: relative;
+
+    h1 {
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+        color: $primary-color;
+        font-size: 2em;  // تحديد حجم الخط
+        font-weight: 700;  // جعل النص أكثر سمكًا
+        text-transform: uppercase;  // جعل العنوان بحروف كبيرة
+    }
+
+    form {
+        margin: 20px 0;  // إضافة تباعد أعلى وأسفل النموذج
+    }
+
+    input {
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    button{
+        @include mixins.button(#ffffff00, $text-color, $primary-color, $text-color);
+    }
+
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .invalid-feedback {
+        color: $primary-color;
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+}
+
+// تحسين التوافق مع الشاشات الصغيرة
+@media (max-width: 768px) {
+    .singup {
+        width: 90%;  // جعل العرض أصغر على الشاشات الصغيرة
+        margin-top: 50px;  // تقليل المسافة العلوية على الشاشات الصغيرة
+    }
+
+    h1 {
+        font-size: 1.5em;  // تصغير حجم العنوان على الشاشات الصغيرة
+    }
+}
