@@ -74,11 +74,56 @@
     font-size: 1.5em;
   }
 }
+header .tyurky-info {
+  padding-top: 150px;
+}
+header .tyurky-info h1 {
+  text-align: center;
+  color: white;
+  padding: 30px;
+  margin-bottom: 50px;
+}
+header .tyurky-info p {
+  width: 70%;
+  font-size: 20px;
+  line-height: 35px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.gallery {
+  padding: 50px 0;
+  background-color: #f8f9fa;
+}
+.gallery .image-container {
+  position: relative;
+}
+.gallery .image-container img {
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  height: 100%;
+}
+.gallery .image-container img:hover {
+  transform: scale(1.05);
+}
+
 /* Mixins */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+section .title {
+  text-align: center;
+  margin-bottom: 55px;
+  font-size: 40px;
+  color: #ffd700 !important;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.highlight {
+  color: #ffd700 !important;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 header {
@@ -207,10 +252,6 @@ header .layout .about-us a:hover {
   padding: 50px 0;
   background-color: #f8f9fa;
 }
-.services .title {
-  margin: 30px;
-  text-align: center;
-}
 .services .card {
   margin: 10px 0;
   border: 3px dashed #ffd700;
@@ -253,10 +294,6 @@ header .layout .about-us a:hover {
 
 .our-trip {
   padding: 50px 0;
-}
-.our-trip .title {
-  margin: 30px;
-  text-align: center;
 }
 .our-trip .trip {
   margin: 30px 0;
@@ -320,16 +357,6 @@ header .layout .about-us a:hover {
   padding: 50px 0;
   background-color: #f8f9fa;
 }
-.contact-us .title {
-  font-size: 2.5rem;
-  color: #333;
-  font-weight: 600;
-}
-@media (max-width: 767px) {
-  .contact-us .title {
-    font-size: 2rem;
-  }
-}
 .contact-us .contact-info {
   font-size: 1rem;
   color: #555;
@@ -370,13 +397,37 @@ footer a:hover svg {
   transform: scale(1.4);
 }
 
-@media (max-width: 662px) {
+.tur-info p {
+  line-height: 24px;
+  font-size: 15px;
+}
+
+@media (max-width: 994px) {
+  header .layout .tyurky-info p {
+    padding: 10px;
+    line-height: 24px;
+    font-size: 20px;
+  }
+}
+@media (max-width: 672px) {
   header .layout .about-us {
     position: absolute;
     bottom: 50px;
   }
+  header .layout .about-us h1 {
+    padding: 10px !important;
+  }
   header .layout .about-us p {
     width: 90%;
+  }
+  header .layout .tyurky-info {
+    padding-top: 50px;
+  }
+  header .layout .tyurky-info p {
+    width: 90%;
+    padding: 5px;
+    line-height: 24px;
+    font-size: 18px;
   }
 }
 /*!************************************************************************************************************************!*\

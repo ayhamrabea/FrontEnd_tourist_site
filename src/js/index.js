@@ -20,123 +20,114 @@ AOS.init({
 
 // src/index.js
 
-// التحقق إذا كانت الصفحة هي الصفحة الرئيسية فقط
-if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-    // التحقق من أن العنصر navbar موجود في الصفحة
-    const navbar = document.querySelector('.navbar');
-    if (navbar) {
-        // التحقق من أن DOM قد تم تحميله بالكامل
-        document.addEventListener('DOMContentLoaded', function () {
-            window.addEventListener('scroll', function () {
-                if (window.scrollY > 250) {  // إذا كان التمرير أكبر من 250px
-                    navbar.classList.add('navbar-scrolled');  // إضافة الفئة (class)
-                } else {
-                    navbar.classList.remove('navbar-scrolled');  // إزالة الفئة (class)
+const navbar = document.querySelector('.navbar');
+if (navbar) {
+    // التحقق من أن DOM قد تم تحميله بالكامل
+    document.addEventListener('DOMContentLoaded', function () {
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 250) {  // إذا كان التمرير أكبر من 250px
+                navbar.classList.add('navbar-scrolled');  // إضافة الفئة (class)
+            } else {
+                navbar.classList.remove('navbar-scrolled');  // إزالة الفئة (class)
+            }
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    // دالة عامة للتحقق من صحة الحقول
+    function validateField(field, condition, errorMessage) {
+        if (!condition) {         // إذا كان الحقل غير صالح
+            field.classList.add('is-invalid');
+            if (errorMessage) {
+                let error = field.nextElementSibling;
+                if (!error || !error.classList.contains('error-message')) {
+                    error = document.createElement('div');
+                    error.classList.add('error-message', 'text-danger', 'mt-1');
+                    field.parentNode.appendChild(error);
                 }
-            });
+                error.textContent = errorMessage;
+            }
+            return false;
+        } else {
+            field.classList.remove('is-invalid');
+            const error = field.nextElementSibling;
+            if (error && error.classList.contains('error-message')) {
+                error.remove();
+            }
+            return true;
+        }
+    }
+
+    // نموذج تسجيل الدخول
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            let isValid = true;
+
+            // التحقق من البريد الإلكتروني
+            const email = document.getElementById('exampleFormControlInput1');
+            isValid &= validateField(email, email.value && email.checkValidity());
+
+            // التحقق من كلمة المرور
+            const password = document.getElementById('inputPassword');
+            isValid &= validateField(password, password.value);
+
+            // إذا كانت المدخلات صحيحة
+            if (isValid) {
+                alert('تم تسجيل الدخول بنجاح!');
+                window.location.href = 'index.html';
+            }
         });
     }
 
-}
+    // نموذج تسجيل الحساب
+    const signupForm = document.getElementById('signupForm');
+    if (signupForm) {
+        signupForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            let isValid = true;
 
+            // التحقق من اسم المستخدم
+            const fullName = document.getElementById('fullName');
+            isValid &= validateField(fullName, fullName.value, 'يرجى إدخال الاسم الكامل.');
 
-document.addEventListener('DOMContentLoaded', function () {
-    // الحصول على النموذج
-    const form = document.getElementById('loginForm');
+            // التحقق من تاريخ الميلاد
+            const dob = document.getElementById('dob');
+            isValid &= validateField(dob, dob.value, 'يرجى إدخال تاريخ الميلاد.');
 
-    // التحقق عند إرسال النموذج
-    form.addEventListener('submit', function (event) {
-        event.preventDefault(); // منع الإرسال الفعلي للنموذج
+            // التحقق من البريد الإلكتروني
+            const email = document.getElementById('email');
+            isValid &= validateField(email, email.value && email.checkValidity(), 'يرجى إدخال بريد إلكتروني صالح.');
 
-        // التحقق من المدخلات
-        let isValid = true;
+            // التحقق من كلمة المرور
+            const password = document.getElementById('password');
+            isValid &= validateField(password, password.value, 'يرجى إدخال كلمة المرور.');
 
-        // التحقق من البريد الإلكتروني
-        const email = document.getElementById('exampleFormControlInput1');
-        if (!email.value || !email.checkValidity()) {
-            email.classList.add('is-invalid');
-            isValid = false;
-        } else {
-            email.classList.remove('is-invalid');
-        }
+            // التحقق من تأكيد كلمة المرور
+            const confirmPassword = document.getElementById('confirmPassword');
+            isValid &= validateField(
+                confirmPassword,
+                confirmPassword.value && confirmPassword.value === password.value,
+                'يجب أن تتطابق كلمة المرور مع التأكيد.'
+            );
 
-        // التحقق من كلمة السر
-        const password = document.getElementById('inputPassword');
-        if (!password.value || !password.checkValidity()) {
-            password.classList.add('is-invalid');
-            isValid = false;
-        } else {
-            password.classList.remove('is-invalid');
-        }
-
-        // إذا كانت المدخلات صحيحة، يمكن إرسال النموذج
-        if (isValid) {
-            // يمكنك إضافة الكود هنا لإرسال النموذج أو تنفيذ عملية أخرى بعد التحقق من المدخلات.
-            alert("تم تسجيل الدخول بنجاح!");
-            window.location.href = "index.html";
-        }
-    });
+            // إذا كانت المدخلات صحيحة
+            if (isValid) {
+                alert('تم تسجيل الحساب بنجاح!');
+                window.location.href = 'index.html';
+            }
+        });
+    }
 });
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('signupForm');
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();  // منع الإرسال الفعلي للنموذج
 
-        let isValid = true;
 
-        // التحقق من اسم المستخدم
-        const fullName = document.getElementById('fullName');
-        if (!fullName.value) {
-            fullName.classList.add('is-invalid');
-            isValid = false;
-        } else {
-            fullName.classList.remove('is-invalid');
-        }
 
-        // التحقق من تاريخ الميلاد
-        const dob = document.getElementById('dob');
-        if (!dob.value) {
-            dob.classList.add('is-invalid');
-            isValid = false;
-        } else {
-            dob.classList.remove('is-invalid');
-        }
 
-        // التحقق من البريد الإلكتروني
-        const email = document.getElementById('email');
-        if (!email.value || !email.checkValidity()) {
-            email.classList.add('is-invalid');
-            isValid = false;
-        } else {
-            email.classList.remove('is-invalid');
-        }
-
-        // التحقق من كلمة المرور
-        const password = document.getElementById('password');
-        if (!password.value) {
-            password.classList.add('is-invalid');
-            isValid = false;
-        } else {
-            password.classList.remove('is-invalid');
-        }
-
-        // التحقق من تأكيد كلمة المرور
-        const confirmPassword = document.getElementById('confirmPassword');
-        if (!confirmPassword.value || confirmPassword.value !== password.value) {
-            confirmPassword.classList.add('is-invalid');
-            isValid = false;
-        } else {
-            confirmPassword.classList.remove('is-invalid');
-        }
-
-        // إذا كانت المدخلات صحيحة، يمكن إرسال النموذج
-        if (isValid) {
-            alert('تم تسجيل الحساب بنجاح!');
-            // يمكن إضافة كود إرسال النموذج إلى الخادم هنا
-            window.location.href = "index.html";
-        }
-    });
-});
+const contentDiv = document.getElementById('content');
+// استبدال كلمة "مصر" بعنصر <span> مخصص
+contentDiv.innerHTML = contentDiv.innerHTML.replace(/مصر/g, '<span class="highlight">مصر</span>');

@@ -110,6 +110,14 @@ module.exports = {
                 template: './src/login.html',   
                 filename: 'login.html'    
             }),
+            new HtmlWebpackPlugin({
+                template: './src/egypt.html',   
+                filename: 'egypt.html'    
+            }),
+            new HtmlWebpackPlugin({
+                template: './src/tyurky.html',   
+                filename: 'tyurky.html'    
+            }),
                 
             new CleanWebpackPlugin(),  // لأيقاف توليد الملفات
             new MiniCssExtractPlugin({

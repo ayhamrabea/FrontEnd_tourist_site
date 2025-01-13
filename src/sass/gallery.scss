@@ -1,0 +1,43 @@
+header{
+    .tyurky-info{
+        padding-top: 150px;
+    h1{
+        text-align: center;
+        color: white;
+        padding: 30px;
+        margin-bottom: 50px;
+    }
+    p{
+        width: 70%;
+        font-size: 20px;
+        line-height: 35px;
+        color: rgba(255, 255, 255, 0.9);
+    }
+    }
+}
+
+
+.gallery{
+    
+    padding: 50px 0;
+    background-color: #f8f9fa;
+    .image-container{
+        position: relative;
+        
+        img {
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            height: 100%;
+
+        
+            &:hover{
+                transform: scale(1.05);
+            }
+        }
+
+    }
+
+}
+
+
+

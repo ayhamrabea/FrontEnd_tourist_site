@@ -1,6 +1,7 @@
 @use './mixins.scss';
 @use 'variables' as *;
 @use './singgup.scss';
+@use './gallery.scss';
 
 
 /* Mixins */
@@ -13,6 +14,21 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+section .title{
+    text-align: center;
+    margin-bottom: 55px;
+    font-size: 40px;
+    color: $primary-color !important;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.highlight{
+    color: $primary-color !important;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+
 header{
     background-image: url(../images/bg.jpg);
     background-position: center;
@@ -114,6 +130,7 @@ header{
                 text-transform: uppercase; 
 
             }
+            
         }
     }
     
@@ -123,10 +140,6 @@ header{
 .services{
     padding: 50px 0;
     background-color: #f8f9fa;
-    .title{
-        margin: 30px;
-        text-align: center;
-    }
     .card{
         margin: 10px 0;
         border: 3px dashed $primary-color;
@@ -173,10 +186,6 @@ header{
 
 .our-trip{
         padding: 50px 0;
-        .title{
-            margin: 30px;
-            text-align: center;
-        }
         .trip{
             margin: 30px 0;
             position: relative;
@@ -226,16 +235,6 @@ header{
 .contact-us {
     padding: 50px 0;
     background-color: #f8f9fa;
-
-    .title {
-        font-size: 2.5rem;
-        color: #333;
-        font-weight: 600;
-    
-        @media (max-width: 767px) {
-            font-size: 2rem;
-        }
-    }
 
     .contact-info {
         font-size: 1rem;
@@ -290,23 +289,55 @@ footer {
     }
 }
 
+.tur-info{
+    p{
+        line-height: 24px;
+        font-size: 15px;
+    }
+}
 
 
 
-@media (max-width: 662px) {
+
+
+@media (max-width: 994px) {
+    header{
+        .layout{
+            .tyurky-info{
+                p{
+                    padding: 10px;
+                    line-height: 24px;
+                    font-size: 20px;
+                }
+            }
+        }   
+    }
+}
+@media (max-width: 672px) {
     header{
         .layout{
             .about-us{
                 position: absolute;
                 bottom: 50px;
-
+                h1{
+                    padding: 10px !important;
+                }
                 p{
                     width: 90%;
                     
                 }
             }
+            .tyurky-info{
+                padding-top: 50px;
+                p{
+                    width: 90%;
+                    padding: 5px;
+                    line-height: 24px;
+                    font-size: 18px;
+                }
+            }
         }   
-    } 
+    }
 }
 
 
