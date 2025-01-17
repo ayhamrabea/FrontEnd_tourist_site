@@ -13,7 +13,7 @@ module.exports = {
 
     output: {    // المكان الذي سوف يتم وضع الملفات المخرجة فيه
             filename: 'js/index.js',
-            path: path.resolve(__dirname, 'bulid'),
+            path: path.resolve(__dirname, 'docs'),
             publicPath: '/',
         },
 
