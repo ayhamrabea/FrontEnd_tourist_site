@@ -19,24 +19,24 @@ AOS.init({
 
 
 // src/index.js
-
+const navbar = document.querySelector('.navbar');
+if (navbar) {
+    // التحقق من أن DOM قد تم تحميله بالكامل
+    document.addEventListener('DOMContentLoaded', function () {
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 250) {  // إذا كان التمرير أكبر من 250px
+                navbar.classList.add('navbar-scrolled');  // إضافة الفئة (class)
+            } else {
+                navbar.classList.remove('navbar-scrolled');  // إزالة الفئة (class)
+            }
+        });
+    });
+}
 
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    const navbar = document.querySelector('.navbar');
-    if (navbar) {
-        // التحقق من أن DOM قد تم تحميله بالكامل
-        document.addEventListener('DOMContentLoaded', function () {
-            window.addEventListener('scroll', function () {
-                if (window.scrollY > 250) {  // إذا كان التمرير أكبر من 250px
-                    navbar.classList.add('navbar-scrolled');  // إضافة الفئة (class)
-                } else {
-                    navbar.classList.remove('navbar-scrolled');  // إزالة الفئة (class)
-                }
-            });
-        });
-    }
+   
 
     
     // دالة عامة للتحقق من صحة الحقول
