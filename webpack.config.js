@@ -14,7 +14,7 @@ module.exports = {
     output: {    // المكان الذي سوف يتم وضع الملفات المخرجة فيه
             filename: 'js/index.js',
             path: path.resolve(__dirname, 'docs'),
-            publicPath: './',
+            publicPath: '/FrontEnd_tourist_site/', // اسم المستودع
         },
 
 
