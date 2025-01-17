@@ -20,21 +20,25 @@ AOS.init({
 
 // src/index.js
 
-const navbar = document.querySelector('.navbar');
-if (navbar) {
-    // التحقق من أن DOM قد تم تحميله بالكامل
-    document.addEventListener('DOMContentLoaded', function () {
-        window.addEventListener('scroll', function () {
-            if (window.scrollY > 250) {  // إذا كان التمرير أكبر من 250px
-                navbar.classList.add('navbar-scrolled');  // إضافة الفئة (class)
-            } else {
-                navbar.classList.remove('navbar-scrolled');  // إزالة الفئة (class)
-            }
-        });
-    });
-}
+
 
 document.addEventListener('DOMContentLoaded', function () {
+
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        // التحقق من أن DOM قد تم تحميله بالكامل
+        document.addEventListener('DOMContentLoaded', function () {
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 250) {  // إذا كان التمرير أكبر من 250px
+                    navbar.classList.add('navbar-scrolled');  // إضافة الفئة (class)
+                } else {
+                    navbar.classList.remove('navbar-scrolled');  // إزالة الفئة (class)
+                }
+            });
+        });
+    }
+
+    
     // دالة عامة للتحقق من صحة الحقول
     function validateField(field, condition, errorMessage) {
         if (!condition) {         // إذا كان الحقل غير صالح
@@ -120,6 +124,15 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+
+
+    if (window.location.pathname === '/egypt.html'){
+        const contentDiv = document.getElementById('content');
+        // استبدال كلمة "مصر" بعنصر <span> مخصص
+        contentDiv.innerHTML = contentDiv.innerHTML.replace(/مصر/g, '<span class="highlight">مصر</span>');
+    
+    }
 });
 
 
@@ -127,7 +140,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
-const contentDiv = document.getElementById('content');
-// استبدال كلمة "مصر" بعنصر <span> مخصص
-contentDiv.innerHTML = contentDiv.innerHTML.replace(/مصر/g, '<span class="highlight">مصر</span>');
